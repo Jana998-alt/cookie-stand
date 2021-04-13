@@ -323,7 +323,15 @@ function randomValue(min, max) {
 // lima.cookiesPerHour();
 // lima.render ();
 
+//Global useful variables
+let container = document.getElementById('container');
+let table = document.createElement('table');
+container.appendChild(table);
 let globalArray=[];
+let counterOfLocations = 0;
+let totalOfHours = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
+
+//Constructor's function
 function CreatingLocation(location, minCustomer, maxCustomer,avgCookiePerCustomer){
     this.location= location;
     this.minCustomer=minCustomer;
@@ -336,8 +344,7 @@ function CreatingLocation(location, minCustomer, maxCustomer,avgCookiePerCustome
     globalArray.push(this);
 }
 
-
-
+// Method for calculating the number of customers that come per hour
 CreatingLocation.prototype.customersPerHour=function(){
     let i=0;
     let randomCustomers = 0;
@@ -346,6 +353,7 @@ CreatingLocation.prototype.customersPerHour=function(){
         this.numOfCustomersPerHour.push(randomCustomers);
     }
 }
+// method for calculating the number of cookies needed per hour based on the customers per hour
 CreatingLocation.prototype.cookiesPerHour = function () {
         let i = 0;
         let clock='';
@@ -367,7 +375,7 @@ CreatingLocation.prototype.cookiesPerHour = function () {
             //console.log(this.totalCookies)
         }
 }
-
+// // displaying the data of cookies on the page
 // CreatingLocation.prototype.render=function(){
 //     let h2 = document.createElement('h2');
 //     h2.textContent = this.location; 
@@ -388,26 +396,27 @@ CreatingLocation.prototype.cookiesPerHour = function () {
 //     lists.appendChild(listElement);
 // }
 
-
-CreatingLocation.prototype.render=function(){
-    let container = document.getElementById('container');
-    let table = document.createElement('table');
-    container.appendChild(table);
-    if (counterOfLocations==0){
-        let headerRow = document.createElement('tr');
+// funcation for table header
+function tableHeader(){
+    let headerRow = document.createElement('tr');
         table.appendChild(headerRow);
         let headerElement = document.createElement('th');
         headerElement.textContent = ' '; 
         table.appendChild(headerElement);
-        for (let j=0; j<this.clock.length; j++){
+        for (let j=0; j<14; j++){
             headerElement = document.createElement('th');
-            headerElement.textContent = this.clock[j]; 
+            headerElement.textContent = globalArray[0].clock[j]; 
             table.appendChild(headerElement);
         }
         headerElement = document.createElement('th');
-            headerElement.textContent = 'Total'; 
-            table.appendChild(headerElement);
-    }
+        headerElement.textContent = 'Total'; 
+        table.appendChild(headerElement);
+}
+
+// a method for displaying the table of data (the same data but in the form of a table)
+CreatingLocation.prototype.render=function(){
+    
+    table.setAttribute=('id', 'tableOfData');
     let dataRow = document.createElement('tr');
     table.appendChild(dataRow);
     let dataEl = document.createElement('td'); 
@@ -418,47 +427,47 @@ CreatingLocation.prototype.render=function(){
         dataEl.textContent = this.cookiesArray[i]; 
         table.appendChild(dataEl);
     }
-
+    dataEl = document.createElement('td');
+    dataEl.textContent = this.totalCookies; 
+    table.appendChild(dataEl);
     for(let i=0; i<14; i++){
         totalOfHours[i]=this.cookiesArray[i]+totalOfHours[i];
-        //console.log(totalOfHours);
+        //The line below is to calculat the "total of the total"
+        totalOfHours[14]=totalOfHours[14]+ totalOfHours[i];
     }
-
-    if(totalApprove === true){
-        dataEl = document.createElement('td');
-        dataEl.textContent = 'Total'; 
-        table.appendChild(dataEl);
-        for(let i=0; i<14; i++){
+}
+// a function for table footer
+function tableFooter(){
+    let row = document.createElement('tr'); 
+    table.appendChild(row);
+    let dataEl = document.createElement('td');
+    dataEl.textContent = 'Total'; 
+    row.appendChild(dataEl);
+    for(let i=0; i<15; i++){
         dataEl = document.createElement('td');
         dataEl.textContent = totalOfHours[i]; 
-        table.appendChild(dataEl);
-        console.log(totalOfHours)
-        }
+        row.appendChild(dataEl);
     }
-
+    
 }
 
+//creating objects through constructor's function 'creatinglocation'
 let seattle = new CreatingLocation('Seattle', 23 ,65 , 6.3 );
 let tokyo = new CreatingLocation ('tokyo', 3 ,24 ,1.2);
 let dubai = new CreatingLocation ('dubai', 11 , 38, 3.7);
 let paris = new CreatingLocation ('paris', 20 , 38 , 2.3);
 let lima = new CreatingLocation ('lima', 2 , 16 , 4.6);
-let counterOfLocations = 0;
-let totalOfHours = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
-let totalApprove = false;
+
+
+//calling methods of objects
 for (let i=0; i<globalArray.length; i++){ 
-    if (i+1 == globalArray.length){
-        totalApprove = true;
-    };
     globalArray[i].customersPerHour();
     globalArray[i].cookiesPerHour();
-    globalArray[i].render ();
     counterOfLocations = counterOfLocations+1
-    
 }
-
-// seattle.customersPerHour();
-// // //console.log(seattle.numOfCustomersPerHour);
-//  seattle.cookiesPerHour();
-// console.log(seattle.cookiesArray);
-//   seattle.render ();
+//here, displaying the data in a table
+tableHeader();
+for(let i=0; i<globalArray.length; i++){ 
+globalArray[i].render ();
+}
+tableFooter();
