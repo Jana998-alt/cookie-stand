@@ -425,6 +425,9 @@ CreatingLocation.prototype.render=function(){
     }
 
     if(totalApprove === true){
+        dataEl = document.createElement('td');
+        dataEl.textContent = 'Total'; 
+        table.appendChild(dataEl);
         for(let i=0; i<14; i++){
         dataEl = document.createElement('td');
         dataEl.textContent = totalOfHours[i]; 
@@ -444,13 +447,14 @@ let counterOfLocations = 0;
 let totalOfHours = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
 let totalApprove = false;
 for (let i=0; i<globalArray.length; i++){ 
+    if (i+1 == globalArray.length){
+        totalApprove = true;
+    };
     globalArray[i].customersPerHour();
     globalArray[i].cookiesPerHour();
     globalArray[i].render ();
     counterOfLocations = counterOfLocations+1
-    if (i+1 ==globalArray.length){
-        totalApprove = true;
-    };
+    
 }
 
 // seattle.customersPerHour();
