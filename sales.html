@@ -6,11 +6,31 @@
         </head>
 
         <body>
-            
+            <a href="index.html">Go back to home page</a>
             <div id=container>
 
             </div>
-            <a href="index.html">Go back to home page</a>
+            <br>
+            <form id ="form">
+                <fieldset>
+                    <legend>Add a new location</legend>
+                        <label for="locationFeild">Location: </label>
+                        <input type="text" name="locationFeild">
+                        <br>
+                        <label for="min">Min. number of customers/hour:</label>
+                        <input type="number" id="min">
+                        <br>
+                        <label for="max">Max. number of customers/hour</label>
+                        <input type="number" id="max">
+                        <br>
+                        <label for="avg">Avg. number of cookies/ customer</label>
+                        <input type="number" step="0.01" id="avg">
+                        <br>
+                        <input type="submit" id="submitting">
+                        <br>
+                    
+            </fieldset>
+        </form>
 
             
             <script src="JS/app.js"></script>

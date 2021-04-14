@@ -451,6 +451,10 @@ function tableFooter(){
     
 }
 
+
+
+
+
 //creating objects through constructor's function 'creatinglocation'
 let seattle = new CreatingLocation('Seattle', 23 ,65 , 6.3 );
 let tokyo = new CreatingLocation ('tokyo', 3 ,24 ,1.2);
@@ -471,3 +475,25 @@ for(let i=0; i<globalArray.length; i++){
 globalArray[i].render ();
 }
 tableFooter();
+
+
+let form =document.getElementById("form");
+form.addEventListener('submit', addNewData);
+function addNewData(event){
+    event.preventDefault();
+    //console.log('add new data function');
+    // here, assigning the new data into variables
+    let locationName =event.target.locationFeild.value;
+    //console.log(locationName);
+    let minimumValue = parseInt(event.target.min.value);
+    let maximumValue =parseInt(event.target.max.value);
+    let averageOfCookies = parseFloat(event.target.avg.value); 
+
+    //now, adding the data to the table 
+    let newLocation = new CreatingLocation(locationName, minimumValue ,maximumValue , averageOfCookies );
+    newLocation.customersPerHour();
+    newLocation.cookiesPerHour();
+    table.deleteRow(-1);
+    newLocation.render ();
+    tableFooter();
+}
