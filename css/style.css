@@ -1,22 +1,24 @@
-/* Pallate: 
-274C53
-3B575C
-8B8571
-E37859
-EAEDC2*/
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
+
+html{
+    background-image: url("../img/an-ocean-of-gold--6-cody-cookston.jpg");
+    background-repeat: repeat-x;
+    background-attachment: fixed
+}
 
 header{
-background:#8B8571 ;
+background-image:"img/background.jpg" ;
 /*color:#EAEDC2 ;*/
 width: 100%;
 margin: 0px;
 margin-bottom: 30px;
-border-bottom:#3B575C ;
+border-bottom:black ;
 border-style: solid;
 border-left: 0px;
 border-right: 0px;
 border-top: 0px;
 border-width: 10px;
+font-family: 'Hachi Maru Pop', cursive;
 
 }
 
@@ -24,16 +26,24 @@ header img{
     width: 25%;
     margin: 13px;
 }
-header h1, header a{
+  
+header a{
+    border: solid;
+    border-radius: 50%;
+    padding: 20px;
+    display: inline;
+    font-family: 'Hachi Maru Pop', cursive;
+    color: whitesmoke;
+}
+header h1{
+    font-size: 40px;
+    text-shadow: 0 0 13px black;
     display: inline-block;
     width: 34%;
     vertical-align:  100%;
-    margin: 10px;
-    color: #EAEDC2;
-    
-}   
-header h1{
-    font-size: 46px;
+    margin: 4px;
+    color: whitesmoke;
+    font-family: 'Hachi Maru Pop', cursive;
 }
 #images-container{
     display: block;
@@ -43,26 +53,71 @@ header h1{
 }
 #right, #left {
     display: inline-block;
-    background-color:#3B575C;
-    width: 40px;
+    background-color:black;
+    width: 60px;
     height: 150px;
 }
 #images img{
     display: inline-block;
     height: 150px;
+    border: black;
+    border-radius: 100%;
 }
 h2{
     text-align: center;
     margin: 40px;
     font-size: 35px;
+    text-shadow: 0 0 13px black;
+    color: whitesmoke;
+    font-family: 'Hachi Maru Pop', cursive;
 
 }
 
 #location-card{
-    background-color: #3B575C;
+    background-image: url('../img/gold.gif');
     text-align: center;
+    vertical-align: center;
     color: #EAEDC2;
     padding: 10px;
-    margin: 15px;
-    font-size: 20px;
+    margin: 60px;
+    font-size: 18px;
+    border-radius: 100%;
+    width: 300px;
+    height: 300px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    display: inline-block;
+    font-family: 'Hachi Maru Pop', cursive;
+}
+main:last-child{
+    margin: 300px;
+}
+main:nth-last-child(2){
+    margin: 500px;
+}
+
+table,th, td {
+    border: 3px solid black;
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: bolder;
+    text-shadow: 0 0 15px whitesmoke;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+table{
+    display: inline-block;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+form{
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: bolder;
+    text-shadow: 0 0 15px whitesmoke;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    width: 50%;
+    margin-left: 320px;
+    margin-right: 320px;
+    background-color: rgb(0, 0, 0, 85%);
+    border-radius: 8%;
 }
