@@ -88,12 +88,7 @@ h2{
     display: inline-block;
     font-family: 'Hachi Maru Pop', cursive;
 }
-main:last-child{
-    margin: 300px;
-}
-main:nth-last-child(2){
-    margin: 500px;
-}
+
 
 table,th, td {
     border: 3px solid black;
